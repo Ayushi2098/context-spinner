@@ -1,14 +1,13 @@
 # Context Spinner
 
-Generate real-world math applications by combining Olympic contexts with math subtopics.
+Generate real-world math applications by combining contexts with math subtopics.
 
 ## Features
 
-- **Context Wheel**: Spin to randomly select an Olympic context (Aquatics Centre, Stadium, Velodrome, etc.)
+- **Context Wheel**: Spin to randomly select a context (Aquatics Centre, Stadium, Velodrome, etc.)
 - **Subtopic Selection**: Choose math subtopics (Ratio, Graphs, Measurement, etc.) - the generator randomly picks 3 to combine
 - **Filter Options**: Optional filters for year level, difficulty, time limit, assessment type, and sport
 - **Idea Generation**: Generate 3-6 math application ideas that combine the context with the selected subtopics
-- **Image Generation**: Generate images for each idea using Gemini (requires API setup)
 
 ## Getting Started
 
