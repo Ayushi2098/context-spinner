@@ -1,0 +1,380 @@
+.generating-loader-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: #ffffff;
+    backdrop-filter: blur(12px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    border-radius: 12px;
+    animation: fadeInOverlay 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.loader-content {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+    max-width: 90%;
+}
+
+.bot-animation-container {
+    position: relative;
+    width: 240px;
+    height: 240px;
+}
+
+/* Magic aura behind the wand area - More ethereal */
+.bot-animation-container::before {
+    content: '';
+    position: absolute;
+    top: 15%;
+    right: 5%;
+    width: 140px;
+    height: 140px;
+    background: radial-gradient(circle, rgba(185, 0, 255, 0.25) 0%, rgba(131, 46, 197, 0.1) 40%, rgba(131, 46, 197, 0) 70%);
+    border-radius: 50%;
+    filter: blur(30px);
+    animation: magic-flicker 3s infinite ease-in-out;
+    z-index: 0;
+    pointer-events: none;
+}
+
+/* Secondary glow for depth */
+.bot-animation-container::after {
+    content: '';
+    position: absolute;
+    top: 22%;
+    right: 12%;
+    width: 60px;
+    height: 60px;
+    background: radial-gradient(circle, rgba(255, 199, 0, 0.3) 0%, rgba(255, 199, 0, 0) 70%);
+    border-radius: 50%;
+    filter: blur(15px);
+    animation: magic-flicker 3s infinite reverse ease-in-out;
+    z-index: 0;
+    pointer-events: none;
+}
+
+.bot-magic-img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    will-change: opacity;
+    user-select: none;
+    mix-blend-mode: multiply;
+}
+
+.frame-1 {
+    z-index: 1;
+}
+
+.frame-2 {
+    opacity: 0;
+    z-index: 2;
+    animation: discovery-crossfade 5s infinite cubic-bezier(0.45, 0.05, 0.55, 0.95);
+    /* Tighter mask to isolate ONLY the wand and stars, avoiding the eyes entirely */
+    -webkit-mask-image: radial-gradient(circle at 82% 28%, black 0%, black 10%, transparent 20%);
+    mask-image: radial-gradient(circle at 82% 28%, black 0%, black 10%, transparent 20%);
+}
+
+/* Supplemental CSS Sparkles - Cleaner & Varied */
+.sparkles-overlay {
+    position: absolute;
+    top: 28%;
+    right: 18%;
+    width: 1px;
+    height: 1px;
+    pointer-events: none;
+    z-index: 3;
+}
+
+.css-sparkle {
+    position: absolute;
+    background: white;
+    border-radius: 50%;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.9), 0 0 15px rgba(255, 199, 0, 0.6);
+    opacity: 0;
+    animation: discovery-float 4.5s infinite ease-out;
+    will-change: transform, opacity;
+}
+
+/* Star-like sparkle */
+.css-sparkle::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 140%;
+    height: 20%;
+    background: rgba(255, 255, 255, 0.8);
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+}
+
+.css-sparkle::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 20%;
+    height: 140%;
+    background: rgba(255, 255, 255, 0.8);
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+}
+
+/* Individual sparkle variations */
+.css-sparkle:nth-child(4n) {
+    background: #FFC700;
+    box-shadow: 0 0 12px rgba(255, 199, 0, 0.8);
+}
+
+.css-sparkle:nth-child(4n+1) {
+    background: #B900FF;
+    box-shadow: 0 0 12px rgba(185, 0, 255, 0.8);
+}
+
+.css-sparkle:nth-child(1) {
+    --tx: -60px;
+    --ty: -80px;
+    animation-delay: 0s;
+    width: 5px;
+    height: 5px;
+}
+
+.css-sparkle:nth-child(2) {
+    --tx: 70px;
+    --ty: -50px;
+    animation-delay: 0.3s;
+    width: 4px;
+    height: 4px;
+}
+
+.css-sparkle:nth-child(3) {
+    --tx: -40px;
+    --ty: -110px;
+    animation-delay: 0.6s;
+    width: 6px;
+    height: 6px;
+}
+
+.css-sparkle:nth-child(4) {
+    --tx: 80px;
+    --ty: -20px;
+    animation-delay: 0.9s;
+    width: 3px;
+    height: 3px;
+}
+
+.css-sparkle:nth-child(5) {
+    --tx: -20px;
+    --ty: -70px;
+    animation-delay: 1.2s;
+    width: 5px;
+    height: 5px;
+}
+
+.css-sparkle:nth-child(6) {
+    --tx: 50px;
+    --ty: -90px;
+    animation-delay: 1.5s;
+    width: 4px;
+    height: 4px;
+}
+
+.css-sparkle:nth-child(7) {
+    --tx: -30px;
+    --ty: -40px;
+    animation-delay: 1.8s;
+    width: 5px;
+    height: 5px;
+}
+
+.css-sparkle:nth-child(8) {
+    --tx: 40px;
+    --ty: -120px;
+    animation-delay: 2.1s;
+    width: 3px;
+    height: 3px;
+}
+
+.css-sparkle:nth-child(9) {
+    --tx: -70px;
+    --ty: -40px;
+    animation-delay: 2.4s;
+    width: 6px;
+    height: 6px;
+}
+
+.css-sparkle:nth-child(10) {
+    --tx: 90px;
+    --ty: -60px;
+    animation-delay: 0.5s;
+    width: 4px;
+    height: 4px;
+}
+
+.css-sparkle:nth-child(11) {
+    --tx: 20px;
+    --ty: -130px;
+    animation-delay: 1.0s;
+    width: 5px;
+    height: 5px;
+}
+
+.css-sparkle:nth-child(12) {
+    --tx: -80px;
+    --ty: -30px;
+    animation-delay: 1.5s;
+    width: 4px;
+    height: 4px;
+}
+
+/* Progress Bar - Sleeker & More Dynamic */
+.loader-progress-container {
+    width: 260px;
+    height: 6px;
+    background: rgba(0, 0, 0, 0.04);
+    border-radius: 10px;
+    overflow: hidden;
+    position: relative;
+}
+
+.loader-progress-bar {
+    height: 100%;
+    width: 100%;
+    background: linear-gradient(90deg, #832EC5, #B900FF, #FFC700, #832EC5);
+    background-size: 300% 100%;
+    border-radius: 10px;
+    position: absolute;
+    left: 0;
+    top: 0;
+    transform-origin: left;
+    animation:
+        progress-increase 2s infinite cubic-bezier(0.65, 0, 0.35, 1),
+        gradient-flow 3s infinite linear;
+    box-shadow: 0 0 10px rgba(185, 0, 255, 0.3);
+}
+
+.loader-text {
+    font-family: 'Outfit', 'Inter', sans-serif;
+    font-weight: 600;
+    color: #2D3748;
+    font-size: 1rem;
+    margin: 0;
+    letter-spacing: -0.01em;
+    animation: text-subtle-pulse 2.5s infinite ease-in-out;
+    user-select: none;
+    text-shadow: 0 1px 2px rgba(255, 255, 255, 0.8);
+}
+
+/* New & Optimized Keyframes */
+@keyframes discovery-crossfade {
+
+    0%,
+    15%,
+    85%,
+    100% {
+        opacity: 0;
+    }
+
+    40%,
+    60% {
+        opacity: 1;
+    }
+}
+
+@keyframes discovery-float {
+    0% {
+        transform: translate3d(0, 0, 0) scale(0) rotate(0deg);
+        opacity: 0;
+    }
+
+    15% {
+        opacity: 1;
+        transform: translate3d(0, 0, 0) scale(1.2) rotate(45deg);
+    }
+
+    100% {
+        transform: translate3d(var(--tx), var(--ty), 0) scale(0) rotate(270deg);
+        opacity: 0;
+    }
+}
+
+@keyframes magic-flicker {
+
+    0%,
+    100% {
+        transform: scale(1);
+        opacity: 0.3;
+    }
+
+    50% {
+        transform: scale(1.1);
+        opacity: 0.5;
+    }
+}
+
+@keyframes progress-increase {
+    0% {
+        transform: scaleX(0);
+    }
+
+    45% {
+        transform: scaleX(0.7);
+    }
+
+    70% {
+        transform: scaleX(0.85);
+    }
+
+    100% {
+        transform: scaleX(1);
+    }
+}
+
+@keyframes gradient-flow {
+    0% {
+        background-position: 0% 50%;
+    }
+
+    100% {
+        background-position: 100% 50%;
+    }
+}
+
+@keyframes text-subtle-pulse {
+
+    0%,
+    100% {
+        opacity: 0.7;
+        transform: translateY(0);
+    }
+
+    50% {
+        opacity: 1;
+        transform: translateY(-2px);
+    }
+}
+
+@keyframes fadeInOverlay {
+    from {
+        opacity: 0;
+        backdrop-filter: blur(0px);
+    }
+
+    to {
+        opacity: 1;
+        backdrop-filter: blur(12px);
+    }
+}

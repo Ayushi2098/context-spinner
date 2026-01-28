@@ -1,0 +1,91 @@
+.subtopic-selector {
+  background: white;
+  border-radius: 8px;
+  padding: 1.5rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.subtopic-selector h3 {
+  margin: 0 0 0.5rem 0;
+  color: #333;
+  font-size: 1.25rem;
+}
+
+.subtopic-hint {
+  margin: 0 0 1.5rem 0;
+  color: #666;
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
+
+.strand-group {
+  margin-bottom: 1.5rem;
+}
+
+.strand-group:last-child {
+  margin-bottom: 1rem;
+}
+
+.strand-name {
+  margin: 0 0 0.75rem 0;
+  color: #4A90E2;
+  font-size: 1rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.subtopic-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.subtopic-chip {
+  background: #f5f5f5;
+  border: 2px solid #ddd;
+  border-radius: 20px;
+  padding: 0.5rem 1rem;
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: #333;
+  cursor: pointer;
+  transition: all 0.2s;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.subtopic-chip:hover {
+  background: #e8f4f8;
+  border-color: #4A90E2;
+  transform: translateY(-1px);
+}
+
+.subtopic-chip.selected {
+  background: #4A90E2;
+  border-color: #4A90E2;
+  color: white;
+}
+
+.subtopic-chip.selected:hover {
+  background: #357ABD;
+}
+
+.checkmark {
+  font-size: 1rem;
+  font-weight: bold;
+}
+
+.selection-summary {
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 2px solid #eee;
+  color: #666;
+  font-size: 0.9rem;
+}
+
+.selection-summary .warning {
+  color: #e74c3c;
+  font-weight: 500;
+}
